@@ -221,14 +221,7 @@ app.post("/",async (req,res)=>{
 
     }
     query=query.toUpperCase()
-    if(query.includes("HELP") || query.includes("EMERGENCY") || query.includes("Help") ){
-        if(lang=="Hindi"){
-            return res.send(dic.Response2)
-        }
-        else{
-            return res.send(dic.Response1)
-        }
-    }
+    
     if (query.includes("LOST") || query.includes("HOME") || query.includes("ROAD") || query.includes("WAY") || query.includes("DON'T") || query.includes("FORGOT") || query.includes("PLACE")){
         msg(`${req.body.name} is Lost.His last recorder location was ${long} longitude and ${latt} lattitude . Police authorities have been informed.
         `)
@@ -242,7 +235,7 @@ app.post("/",async (req,res)=>{
         }
     }
     if(query.includes("FOLLOWED") || query.includes("STRANGER")){
-        msg(`${req.body.name} is feeling threatend and not feeling safe. You are His/Her emergency contact.His/Her last recorder location was ${long} longitude and ${latt} lattitude .Police authoroties have been contacted.
+        msg(`${req.body.name} is feeling threatend and not feeling safe. You are His/Her emergency contact.His/Her last recorder location was ${latt} longitude and ${long} lattitude .Police authoroties have been contacted.
         ${req.body.name} को खतरा महसूस हो रहा है और वह सुरक्षित महसूस नहीं कर रहा है। आप उसके आपातकालीन संपर्क हैं। उसका पिछला रिकॉर्डर स्थान ${long} देशांतर और ${latt} अक्षांश था। पुलिस अधिकारियों से संपर्क किया गया है|
         `)
         if(lang=="Hindi"){
@@ -254,7 +247,7 @@ app.post("/",async (req,res)=>{
             return
         }
     }
-    if(query.includes("WOUNDED") || query.includes("INJUR") || query.includes("ACCIDENT") || query.includes("FALL") || query.includes("AMBULANCE") || query.includes("HEART") || query.includes("PILES") || query.includes("BAWASIR") || query.includes("HEALTH")){
+    if(query.includes("WOUNDED") || query.includes("INJUR") || query.includes("ACCIDENT") || query.includes("FALL") || query.includes("AMBULANCE") || query.includes("HEART") || query.includes("HEALTH")){
         msg(`${req.body.name} is injured.His last recorder location was ${long} longitude and ${latt} lattitude . Medical services have been informed.
         ${req.body.name} घायल है। उसका पिछला रिकॉर्डर स्थान ${long} देशांतर और ${latt} अक्षांश था। चिकित्सा सेवाओं को अवगत करा दिया गया है।
         `)
@@ -293,7 +286,14 @@ app.post("/",async (req,res)=>{
             return
         }
     }
-})
+        if(lang=="Hindi"){
+            return res.send(dic.Response2)
+        }
+        else{
+            return res.send(dic.Response1)
+        }
+    }
+)
 app.listen(80,()=>{
     console.log("Server Running")
 })
