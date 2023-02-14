@@ -202,7 +202,7 @@ app.post("/",async (req,res)=>{
             return
         }
         else{
-            res.send(dic.ThreatH)
+            res.send(dic.Threat)
             return
         }
     }
@@ -269,7 +269,7 @@ app.post("/",async (req,res)=>{
             return
         }
         else{
-            res.send(dic.ThreatH)
+            res.send(dic.Threat)
             return
         }
     }
@@ -286,6 +286,7 @@ app.post("/",async (req,res)=>{
             return
         }
     }
+    if(query.includes("HELP") || query.includes("EMERGENCY") || query.includes("Help") ){
         if(lang=="Hindi"){
             return res.send(dic.Response2)
         }
@@ -293,7 +294,7 @@ app.post("/",async (req,res)=>{
             return res.send(dic.Response1)
         }
     }
-)
+})
 app.listen(80,()=>{
     console.log("Server Running")
 })
